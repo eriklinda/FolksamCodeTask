@@ -15,7 +15,13 @@ public class LaunchBrowser {
 		
 		// Specificerar vart chromerdriver finns, vill helst inte hårdkoda, så valde att lägga chromedriver i en mapp som finns i projektet
 		// Filsökvägen hittas då med hjälp av ett anrop som talar om vilket "current workdirectory" vi är i, sedan lägger till sökvägen till chromedriver
-		System.setProperty("webdriver.chrome.driver", String.format("%s/resources/chromedriver", System.getProperty("user.dir")));
+		String os = System.getProperty("os.name");;
+			
+		if (os.startsWith("Windows")) {
+			System.setProperty("webdriver.chrome.driver", String.format("%s/resources/chromedriver.exe", System.getProperty("user.dir")));
+		} else {
+			System.setProperty("webdriver.chrome.driver", String.format("%s/resources/chromedriver", System.getProperty("user.dir")));
+		}
 		
 		// Deklarerar en webdriver som ska användas till att slutföra uppgiften
 		WebDriver driver = new ChromeDriver();
