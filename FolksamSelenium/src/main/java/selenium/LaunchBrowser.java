@@ -13,10 +13,11 @@ public class LaunchBrowser {
 
 	public static void main(String[] args) throws InterruptedException {
 		
+		// Kollar vilket operativsystem som det körs på, för att sedan välja korrekt chromedriver
+		String os = System.getProperty("os.name");;
+		
 		// Specificerar vart chromerdriver finns, vill helst inte hårdkoda, så valde att lägga chromedriver i en mapp som finns i projektet
 		// Filsökvägen hittas då med hjälp av ett anrop som talar om vilket "current workdirectory" vi är i, sedan lägger till sökvägen till chromedriver
-		String os = System.getProperty("os.name");;
-			
 		if (os.startsWith("Windows")) {
 			System.setProperty("webdriver.chrome.driver", String.format("%s/resources/chromedriver.exe", System.getProperty("user.dir")));
 		} else {
