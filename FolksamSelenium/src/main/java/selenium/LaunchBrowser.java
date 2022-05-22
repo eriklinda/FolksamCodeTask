@@ -42,7 +42,7 @@ public class LaunchBrowser {
 		// Vi accepterar även Folksams cookies
 		driver.findElement(By.id("onetrust-accept-btn-handler")).click();
 		
-		// Valt att lägga in alla försäkringar som visas i en List
+		// Valt att lägga in alla försäkringar som visas i en List, för att inte låtsas om att man vet vilken det är/hårdkoda något element hel + "lite" mer utmaning
 		// Sedan en for loop igenom listan för att kolla ifall "Hemförsäkring" finns i listan, om den gör det ska den trycka på den
 		List<WebElement> insurances = driver.findElement(By.className("primary-pathways__list")).findElements(By.tagName("li"));
 		for (int i = 0; i < insurances.size(); i++) {
@@ -52,11 +52,8 @@ public class LaunchBrowser {
 				// Så kommer programmet att printa ut texten i rutan som beskrevs i uppgiften
 				System.out.println("Följande text finns står i rutan");
 				System.out.println(driver.findElement(By.className("article__fragment")).getText());
+				break;
 			  }
-			else {
-				// Ifall den av någon mystisk anledning inte hittar hemförsäkring (vilket vi dock vet i det här scenariot) så skriver den ut att den inte fanns.
-				System.out.println("Hittade inte hemförsäkringar bland alternativen");
-			}
 			}
 		
 	}
